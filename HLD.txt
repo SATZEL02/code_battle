@@ -1,0 +1,44 @@
+CODE BATTLE: ONLINE JUDGE
+
+Requirements/Features:
+    1) Problem Statements, Test Cases: Well structured problem statements along with well defined test cases hidden as well explained. 
+    2) Compiler: Compile the code presented to it and run against predefined test-cases for the problem and give output.
+    3) Verdict Compilation: Give the result of successful or unsuccessful submission.
+    3) User Registration: Users are only allowed to access the problems, contests if registered and authenticated.
+    4) Profile Management: User data such as registered mail, recent submissions along with the feature to change user data.
+    5) Contests: Users allowed to compete in a coding battle against fellows coders. Leaderboard will be presented for a particular competition.
+    6) Problem Submission: Users are allowed to submit new problems along with test cases to help the community. 
+
+Tech Stack Preferred:-
+    MERN
+    JWT for authorization
+    AWS/Docker for deployment
+HLD:
+    1)	Database:-
+        (i)	Problems:
+            (a) Name: String
+            (b) Description: String
+            (c) Id: String
+            (d) Tags: String
+            (e) TestCases Input: String
+            (f) TestCases Output: String
+        
+        (ii)         User:  
+            (a)	Username: String
+            (b)	Email: String
+            (c)	Password: String
+        (iii)	 Submissions:
+            (a)	Submission Id: String
+            (b)	Problem Id : String, Foreign Key
+            (c)	User name: String, Foreign Key
+            (d)	TimeStamp: Time/String
+    2)	User Interface/Design:
+        (i)     Login/Signup Page
+        (ii)	Problems page
+        (iii)	User profile page
+        (iv)	Editor / Problem description
+Challenges:
+    1)	 Compiler Optimization and security risks:
+    Implementing 
+    2)	 Problem and database handling for test cases.
+    3)	 Unauthorized access
