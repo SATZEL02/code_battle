@@ -13,32 +13,41 @@ Tech Stack Preferred:-
     MERN
     JWT for authorization
     AWS/Docker for deployment
+
 HLD:
     1)	Database:-
-        (i)	Problems:
-            (a) Name: String
-            (b) Description: String
-            (c) Id: String
-            (d) Tags: String
-            (e) TestCases Input: String
-            (f) TestCases Output: String
+        (i)	    Problems:
+                    (a) Name: String
+                    (b) Description: String
+                    (c) Id: String
+                    (d) Tags: String
+                    (e) TestCases Input: String
+                    (f) TestCases Output: String
         
-        (ii)         User:  
-            (a)	Username: String
-            (b)	Email: String
-            (c)	Password: String
-        (iii)	 Submissions:
-            (a)	Submission Id: String
-            (b)	Problem Id : String, Foreign Key
-            (c)	User name: String, Foreign Key
-            (d)	TimeStamp: Time/String
+        (ii)    User:  
+                    (a)	Username: String
+                    (b)	Email: String
+                    (c)	Password: String
+        
+        (iii)	Submissions:
+                    (a)	Submission Id: String
+                    (b)	Problem Id : String, Foreign Key
+                    (c)	User name: String, Foreign Key
+                    (d)	TimeStamp: Time/String
+    
     2)	User Interface/Design:
+        
         (i)     Login/Signup Page
+        
         (ii)	Problems page
+        
         (iii)	User profile page
+        
         (iv)	Editor / Problem description
+
 Challenges:
-    1)	 Compiler Optimization and security risks:
-    Implementing 
+    1)	 Compiler Optimization and security risks:  Implemention 
+    
     2)	 Problem and database handling for test cases.
+    
     3)	 Unauthorized access
