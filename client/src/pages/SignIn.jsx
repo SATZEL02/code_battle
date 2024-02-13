@@ -47,7 +47,7 @@ export default function SignIn(){
       <OAuth/>
       </form>
       <div className="flex gap-2 mt-5">
-        <p>New User?</p>
+        <p>New to the website?</p>
         <Link to={"/sign-up"}>
           <span className="text-blue-700">Sign Up</span>
         </Link>
