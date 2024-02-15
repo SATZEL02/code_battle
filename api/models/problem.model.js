@@ -22,7 +22,19 @@ const problemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    example_input:{
+        type: String,
+        required: true,
+    },
+    example_output:{
+        type: String,
+        required: true,
+    },
     testCase:{
+        type: String,
+        required: true,
+    },
+    Output:{
         type: String,
         required: true,
     },
