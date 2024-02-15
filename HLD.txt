@@ -15,8 +15,26 @@ Tech Stack Preferred:-
     AWS/Docker for deployment
 
 HLD:
-    1)	Database:-
-        (i)	    Problems:
+    1)  Authentication:-
+        (i)   Json Web Token
+        (ii)  BcryptJS
+        (iii) Session Cookies
+    
+    2)  SignUp / SignIn:-
+        (i)   Username, password and email
+        (ii)  Google OAuth
+
+    3)  User Profile:-
+        (i)   Profile Image Functionality
+        (ii)  Create or submit own problem
+        (iii) Update User data
+
+    4)  Database:-
+        (i)   MongoDB for user data and Problems
+        (ii)  Firebase for files storage
+    
+    	(iii)Schema:-
+            (I)	    Problems:
                     (a) Name: String
                     (b) Description: String
                     (c) Id: String
@@ -24,30 +42,20 @@ HLD:
                     (e) TestCases Input: String
                     (f) TestCases Output: String
         
-        (ii)    User:  
+            (II)    User:  
                     (a)	Username: String
                     (b)	Email: String
                     (c)	Password: String
         
-        (iii)	Submissions:
+            (III)	Submissions:
                     (a)	Submission Id: String
                     (b)	Problem Id : String, Foreign Key
                     (c)	User name: String, Foreign Key
                     (d)	TimeStamp: Time/String
-    
-    2)	User Interface/Design:
-        
-        (i)     Login/Signup Page
-        
-        (ii)	Problems page
-        
-        (iii)	User profile page
-        
-        (iv)	Editor / Problem description
 
 Challenges:
     1)	 Compiler Optimization and security risks:  Implemention 
     
     2)	 Problem and database handling for test cases.
     
-    3)	 Unauthorized access
+    3)	 Test Cases 

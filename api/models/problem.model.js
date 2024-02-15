@@ -26,6 +26,10 @@ const problemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    difficulty:{
+        type: String,
+        required: true,
+    },
     tags:{
         type: Array,
         required: true,
