@@ -10,11 +10,11 @@ const problemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    input:{
+    input_description:{
         type: String,
         required: true,
     },
-    output:{
+    output_description:{
         type: String,
         required: true,
     },
@@ -30,22 +30,22 @@ const problemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    testCase:{
-        type: String,
-        required: true,
-    },
-    Output:{
-        type: String,
-        required: true,
-    },
     difficulty:{
         type: String,
         required: true,
     },
-    tags:{
+    tag:{
         type: Array,
         required: true,
-    }
+    },
+    finalInput:{
+        type:String,
+        required: true,
+    },
+    finalOutput:{
+        type:String,
+        required: true,
+    },
 }, {timestamps: true});
 
 const Problem = mongoose.model('Problem',problemSchema); 
