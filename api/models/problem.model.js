@@ -46,6 +46,10 @@ const problemSchema = new mongoose.Schema({
         type:String,
         required: true,
     },
+    userRef:{
+        type:String,
+        required: true,
+    }
 }, {timestamps: true});
 
 const Problem = mongoose.model('Problem',problemSchema); 

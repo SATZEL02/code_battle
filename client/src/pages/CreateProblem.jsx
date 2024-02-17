@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from "../firebase.js";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateProblem() {
+    const navigate = useNavigate();
     const { currentUser } = useSelector((state) => state.user)
     const [formData, setFormData] = useState({
         problemName: "",
@@ -16,7 +18,8 @@ export default function CreateProblem() {
         difficulty: "Easy",
         author: currentUser.username,
         finalInput: "",
-        finalOutput: ""
+        finalOutput: "",
+        userRef: currentUser._id
     });
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -124,9 +127,8 @@ export default function CreateProblem() {
                 setError(data.message);
                 return;
             }
-
-
             setLoading(false);
+            navigate('/');
         } catch (error) {
             setError(error.message);
             setLoading(false);
