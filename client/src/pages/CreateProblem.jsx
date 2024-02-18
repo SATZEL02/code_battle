@@ -34,9 +34,9 @@ export default function CreateProblem() {
                     const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
 
                     uploadTask.on('state_changed',
-                        (snapshot) => {
-                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                            console.log(Math.round(progress));
+                        () => {
+                            // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            // console.log(Math.round(progress));
                         },
                         (error) => {
                             setError(error);
@@ -64,9 +64,9 @@ export default function CreateProblem() {
                     const storageRef = ref(storage, fileName);
                     const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
                     uploadTask.on('state_changed',
-                        (snapshot) => {
-                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                            console.log(Math.round(progress));
+                        () => {
+                            // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            // console.log(Math.round(progress));
                         },
                         (error) => {
                             setError(error);
@@ -113,7 +113,7 @@ export default function CreateProblem() {
         try {
             setLoading(true);
             setError(false);
-            console.log(formData);
+            // console.log(formData);
             const res = await fetch('api/problem/createproblem', {
                 method: 'POST',
                 headers: {
