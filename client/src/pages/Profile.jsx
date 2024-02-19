@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useRef, useState, useEffect } from "react";
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { deleteObject, getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from "../firebase.js";
 import { updateUserStart, updateUserSuccess, updateUserFailure } from '../redux/user/userSlice.js';
 import { deleteUserStart, deleteUserSuccess, deleteUserFailure } from '../redux/user/userSlice.js';
@@ -21,11 +21,20 @@ export default function Profile() {
   const [userProblemShown,setUserProblemShown] = useState(false);
   const dispatch = useDispatch();
   const [showProblemsError, setShowProblemsError] = useState(false);
-
+  const [imageFileName,setImageFileName] = useState("");
   useEffect(() => {
     const handleFileUpload = (file) => {
       const storage = getStorage(app);
+      if(imageFileName !== ""){
+        const deleteRef = ref(storage,imageFileName);
+        deleteObject(deleteRef).then(()=>{
+          console.log("File deleted successfully");
+        }).catch((error)=>{
+          console.log(error);
+        })
+      }
       const fileName = new Date().getTime() + file.name;
+      setImageFileName(fileName);
       const storageRef = ref(storage, fileName);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on('state_changed',
@@ -178,8 +187,8 @@ export default function Profile() {
             <Link className="text-slate-600 p-3" to={`/listing/${problem._id}`}>
               <p>{index + 1}</p>
             </Link>
-            <Link to={`/listing/${problem._id} className="text-slate-600 font-semibold flex-1 hover:underline truncate"`}>
-              <p>{problem.problemName}</p>
+            <Link to={`/listing/${problem._id}`} >
+              <p className="text-slate-600 font-semibold hover:underline truncate">{problem.problemName}</p>
             </Link>
             <div className="flex flex-col">
               <button className="text-red-600 uppercase">Delete</button>
