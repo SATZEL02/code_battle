@@ -137,6 +137,22 @@ export default function Profile() {
     }
   }
 
+  const handleDeleteProblem = async(problemId) => {
+    try{
+      const res = await fetch(`/api/problem/deleteproblem/${problemId}`,{
+        method: 'DELETE',
+      });
+      const data = res.json();
+      if(data.success ===false){
+        console.log(data.message);
+        return;
+      }
+      setUserProblems((prev)=> prev.filter((problem)=> problem._id !== problemId));
+    } catch(error){
+      console.log(error);
+    }
+  }
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">
@@ -183,7 +199,7 @@ export default function Profile() {
         'Error Showing Problems' : ""}</p>
       {userProblemShown && userProblems && userProblems.length > 0 &&
         userProblems.map((problem, index) =>
-          <div key={problem._id} className="border rounded-lg p-3 flex justify-between items-center gap-4">
+        <div key={problem._id} className="border rounded-lg p-3 flex justify-between items-center gap-4">
             <Link className="text-slate-600 p-3" to={`/listing/${problem._id}`}>
               <p>{index + 1}</p>
             </Link>
@@ -191,7 +207,7 @@ export default function Profile() {
               <p className="text-slate-600 font-semibold hover:underline truncate">{problem.problemName}</p>
             </Link>
             <div className="flex flex-col">
-              <button className="text-red-600 uppercase">Delete</button>
+              <button onClick={()=>handleDeleteProblem(problem._id)} className="text-red-600 uppercase">Delete</button>
               <button className="text-green-600 uppercase">Edit</button>
             </div>
           </div>
