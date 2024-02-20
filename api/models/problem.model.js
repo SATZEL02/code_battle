@@ -35,7 +35,7 @@ const problemSchema = new mongoose.Schema({
         required: true,
     },
     tag:{
-        type: Array,
+        type: String,
         required: true,
     },
     finalInput:{

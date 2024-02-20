@@ -208,7 +208,9 @@ export default function Profile() {
             </Link>
             <div className="flex flex-col">
               <button onClick={()=>handleDeleteProblem(problem._id)} className="text-red-600 uppercase">Delete</button>
-              <button className="text-green-600 uppercase">Edit</button>
+              <Link to ={`/update-problem/${problem._id}`}>
+                <button className="text-green-600 uppercase">Edit</button>
+              </Link>
             </div>
           </div>
         )

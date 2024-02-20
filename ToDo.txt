@@ -1,3 +1,2 @@
 1) Add feature to delete excessive firebase storage
-2) Add detail to create problem page UI
-3) Add strong password feature
+2) Add strong password feature

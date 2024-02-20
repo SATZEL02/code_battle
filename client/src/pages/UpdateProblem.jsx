@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from "../firebase.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
-export default function CreateProblem() {
+export default function UpdateProblem() {
     const navigate = useNavigate();
+    const params = useParams();
     const { currentUser } = useSelector((state) => state.user)
     const [formData, setFormData] = useState({
         problemName: "",
@@ -14,7 +15,7 @@ export default function CreateProblem() {
         output_description: "",
         example_input: "",
         example_output: "",
-        tag: "Array",
+        tag: "",
         difficulty: "Easy",
         author: currentUser.username,
         finalInput: "",
@@ -23,6 +24,21 @@ export default function CreateProblem() {
     });
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    useEffect(() =>{
+        const fetchProblem = async() =>{
+            const problemId = params.problemId;
+            const res = await fetch(`/api/problem/getproblem/${problemId}`);
+            const data = await res.json();
+            if(data.success === false){
+                console.log(data.message);
+                return;
+            }
+            setFormData({...formData,...data});
+        }
+        fetchProblem();
+    },[params.problemId]);
+
 
     const handleChange = (e) => {
         if (e.target.type === "file") {
@@ -113,8 +129,7 @@ export default function CreateProblem() {
         try {
             setLoading(true);
             setError(false);
-            // console.log(formData);
-            const res = await fetch('api/problem/createproblem', {
+            const res = await fetch(`/api/problem/updateproblem/${params.problemId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -128,7 +143,7 @@ export default function CreateProblem() {
                 return;
             }
             setLoading(false);
-            navigate('/');
+            navigate(`/problem/${params.problemId}`);
         } catch (error) {
             setError(error.message);
             setLoading(false);
@@ -136,10 +151,10 @@ export default function CreateProblem() {
     }
     return (
         <main className="p-3 max-w-4xl mx-auto">
-            <h1 className="text-3xl font-semibold text-center my-7">Create A Problem</h1>
+            <h1 className="text-3xl font-semibold text-center my-7">Update A Problem</h1>
             <form className="flex flex-col sm:flex-row gap-4" onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-4 flex-1">
-                    <input type="text" placeholder="Enter Problem Name" className="border p-3 rounded-lg" id="problemName" maxLength='62' minLength="3" required onChange={handleChange} value={formData.name} />
+                    <input type="text" placeholder="Enter Problem Name" className="border p-3 rounded-lg" id="problemName" maxLength='62' minLength="3" required onChange={handleChange} value={formData.problemName} />
                     <textarea type="text" placeholder="Enter Description Here" className="border p-3 rounded-lg" id="description" required onChange={handleChange} value={formData.description} />
                     <textarea type="text" placeholder="Input and data constraints" className="border p-3 rounded-lg" id="input_description" required onChange={handleChange} value={formData.input_description} />
                     <textarea type="text" placeholder="Output Structure" className="border p-3 rounded-lg" id="output_description" required onChange={handleChange} value={formData.output_description} />
@@ -167,9 +182,9 @@ export default function CreateProblem() {
                 </div>
                 <div className="flex flex-col flex-1 gap-3">
                     <p className="font-semibold">Select Input File</p>
-                    <input className="p-3 border border-gray-300 rounded-w-full" type="file" id="finalInput" accept=".txt" required onChange={handleChange} />
+                    <input className="p-3 border border-gray-300 rounded-w-full" type="file" id="finalInput" accept=".txt" onChange={handleChange} />
                     <p className="font-semibold">Select Output File</p>
-                    <input className="p-3 border border-gray-300 rounded-w-full" type="file" id="finalOutput" accept=".txt" required onChange={handleChange} />
+                    <input className="p-3 border border-gray-300 rounded-w-full" type="file" id="finalOutput" accept=".txt" onChange={handleChange} />
                     <p className="font-semibold">Select Problem Difficulty</p>
                     <select className="rounded-lg" value={formData.difficulty} onChange={handleChange} id="Difficulty" >
                         <option key="Easy" value="Easy">Easy</option>
@@ -177,7 +192,7 @@ export default function CreateProblem() {
                         <option key="Hard" value="Hard">Hard</option>
                     </select>
                     <div></div>
-                    <button className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80" disabled={loading}>{loading ? "Creating..." : "Create Problem"}</button>
+                    <button className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80" disabled={loading}>{loading ? "Updating..." : "Update Problem"}</button>
                     {error && <p className="text-red-700 text-sm">{error}</p>}
                 </div>
             </form>

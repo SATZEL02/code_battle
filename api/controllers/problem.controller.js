@@ -32,3 +32,35 @@ export const deleteProblem = async(req, res, next) => {
         next(error);
     }
 }
+
+export const updateProblem = async(req, res, next) => {
+    const problem = await Problem.findById(req.params.id);
+    if(!problem){
+        return next(errorHandler(404,"Problem Not Found!"));
+    }
+    if(req.user.id !== problem.userRef){
+        return next(errorHandler(401,"Unauthorized!"));
+    }
+    try{
+        const updatedProblem = await Problem.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {new:true},
+        );
+        res.status(200).json(updatedProblem);
+    } catch(error){
+        next(error);
+    }
+}
+
+export const getProblem = async(req, res,next) =>{
+    try{
+        const problem = await Problem.findById(req.params.id);
+        if(!problem){
+            return next(errorHandler(404,"Problem Not Found!"));
+        }
+        res.status(200).json(problem);
+    } catch(error){
+        next(error);    
+    }
+}

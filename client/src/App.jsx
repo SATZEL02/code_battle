@@ -7,6 +7,7 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import CreateProblem from './pages/CreateProblem';
 import PrivateRoute from './components/PrivateRoute';
+import UpdateProblem from './pages/UpdateProblem';
 
 export default function App(){
   return(
@@ -20,6 +21,7 @@ export default function App(){
         <Route element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/create-problem" element={<CreateProblem />}/>
+        <Route path="/update-problem/:problemId" element={<UpdateProblem />}/>
         </Route>
       </Routes>
     </BrowserRouter>
