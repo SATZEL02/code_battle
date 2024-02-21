@@ -200,10 +200,10 @@ export default function Profile() {
       {userProblemShown && userProblems && userProblems.length > 0 &&
         userProblems.map((problem, index) =>
         <div key={problem._id} className="border rounded-lg p-3 flex justify-between items-center gap-4">
-            <Link className="text-slate-600 p-3" to={`/listing/${problem._id}`}>
+            <Link className="text-slate-600 p-3" to={`/problem/${problem._id}`}>
               <p>{index + 1}</p>
             </Link>
-            <Link to={`/listing/${problem._id}`} >
+            <Link to={`/problem/${problem._id}`} >
               <p className="text-slate-600 font-semibold hover:underline truncate">{problem.problemName}</p>
             </Link>
             <div className="flex flex-col">

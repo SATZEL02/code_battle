@@ -37,6 +37,7 @@ export default function UpdateProblem() {
             setFormData({...formData,...data});
         }
         fetchProblem();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[params.problemId]);
 
 
