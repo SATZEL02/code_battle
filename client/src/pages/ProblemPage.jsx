@@ -53,15 +53,15 @@ export default function ProblemPage(){
                     { problemData.difficulty === "Easy" &&
                         <span className="text-green-700 ">{problemData.difficulty}</span>
                     }
-                    <p className="text-lg text-slate-500">{problemData.description}</p>
+                    <div className="text-lg text-slate-500 whitespace-pre-line">{problemData.description}</div>
                     <p className="text-xl text-slate-700">Input And Constraints</p>
-                    <p className="text-lg text-slate-500">{problemData.input_description}</p>
+                    <div className="text-lg text-slate-500 whitespace-pre-line">{problemData.input_description}</div>
                     <p className="text-xl text-slate-700">Output Structure</p>
-                    <p className="text-lg text-slate-500">{problemData.output_description}</p>
+                    <div className="text-lg text-slate-500 whitespace-pre-line">{problemData.output_description}</div>
                     <p className="text-xl text-slate-700">Sample Input</p>
-                    <p className="text-lg text-slate-500">{problemData.example_input}</p>
+                    <div className="text-lg text-slate-500 whitespace-pre-line">{problemData.example_input}</div>
                     <p className="text-xl text-slate-700">Sample Output</p>
-                    <p className="text-lg text-slate-500">{problemData.example_output}</p>
+                    <div className="text-lg text-slate-500 whitespace-pre-line">{problemData.example_output}</div>
                     {   !tagShown && 
                     <button className="text-red-700 items-start" onClick={()=>(setTagShown(!tagShown))}>Show related tag</button>
                     }
