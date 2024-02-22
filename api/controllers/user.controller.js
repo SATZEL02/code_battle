@@ -66,3 +66,14 @@ export const getUserProblems = async(req, res,next) => {
         next(error);
     }
 }
+
+export const submitUserSolution = async(req,res,next) =>{
+    if(req.user.id !==req.params.userId)    return next(errorHandler(401, 'You can only submit from your oqn account!'));
+    try{
+        
+        res.status(200).json({"format":req.body.language,
+        "code":req.body.code,"input":req.body.inputFile,"output":req.body.outputFile});
+    } catch(error){
+        next(error);
+    }
+}
