@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import {CodeEditor} from '../components/CodeEditor.jsx'
 
-import Editor from '@monaco-editor/react';
 
 export default function ProblemPage() {
     const { currentUser } = useSelector((state) => state.user)
@@ -38,8 +38,9 @@ export default function ProblemPage() {
         fetchProblemData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [problemId]);
-    const [language,setLanguage] = useState("cpp");
-    console.log(language);
+    // const [language,setLanguage] = useState("cpp");
+    // const [code,setCode] = useState("// Write Your Code Here");
+    // console.log(code);
     return (
         <main className="flex flex-col sm:flex-row">
             <div className="flex flex-col flex-1 gap-4 my-7 p-3">
@@ -78,12 +79,7 @@ export default function ProblemPage() {
                 }
             </div>
             <div className="flex flex-col flex-1 gap-4 my-7 p-3">
-                <div className="text-slate-700">Code language</div>
-                <select className="rounded-lg max-w-28 bg-slate-700 text-white" id="language" onChange={(e)=>setLanguage(e.target.value)}>
-                    <option id="cpp" value ="cpp">C++17</option>
-                    <option id="py" value ="py">Python</option>
-                </select>
-                <Editor height="60vh" defaultLanguage="cpp" defaultValue="// Write Your Code Here" />;
+                <CodeEditor/>
             </div>
         </main>
     )
