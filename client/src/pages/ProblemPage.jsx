@@ -16,10 +16,10 @@ export default function ProblemPage() {
         example_output: "",
         tag: "Array",
         difficulty: "Easy",
-        author: currentUser.username,
+        author: "",
         finalInput: "",
         finalOutput: "",
-        userRef: currentUser._id
+        userRef: ""
     });
     const params = useParams();
     const navigate = useNavigate();
@@ -79,7 +79,7 @@ export default function ProblemPage() {
                 }
             </div>
             <div className="flex flex-col flex-1 gap-4 my-7 p-3">
-                <CodeEditor/>
+                <CodeEditor problemData={problemData} user={currentUser}/>
             </div>
         </main>
     )

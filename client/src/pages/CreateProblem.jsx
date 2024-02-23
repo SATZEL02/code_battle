@@ -167,9 +167,19 @@ export default function CreateProblem() {
                 </div>
                 <div className="flex flex-col flex-1 gap-3">
                     <p className="font-semibold">Select Input File</p>
-                    <input className="p-3 border border-gray-300 rounded-w-full" type="file" id="finalInput" accept=".txt" required onChange={handleChange} />
+                    <input className="block w-full text-sm text-slate-500
+      file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-violet-50 file:text-violet-700
+      hover:file:bg-violet-100" type="file" id="finalInput" accept=".txt" required onChange={handleChange} />
                     <p className="font-semibold">Select Output File</p>
-                    <input className="p-3 border border-gray-300 rounded-w-full" type="file" id="finalOutput" accept=".txt" required onChange={handleChange} />
+                    <input className="block w-full text-sm text-slate-500
+      file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-violet-50 file:text-violet-700
+      hover:file:bg-violet-100" type="file" id="finalOutput" accept=".txt" required onChange={handleChange} />
                     <p className="font-semibold">Select Problem Difficulty</p>
                     <select className="rounded-lg" value={formData.difficulty} onChange={handleChange} id="Difficulty" >
                         <option key="Easy" value="Easy">Easy</option>
