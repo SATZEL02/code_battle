@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import {CodeEditor} from '../components/CodeEditor.jsx'
 
 
 export default function ProblemPage() {
-    const { currentUser } = useSelector((state) => state.user)
+    // const { currentUser } = useSelector((state) => state.user)
     const [tagShown, setTagShown] = useState(false);
     const [problemData, setProblemData] = useState({
         problemName: "",
@@ -79,7 +79,7 @@ export default function ProblemPage() {
                 }
             </div>
             <div className="flex flex-col flex-1 gap-4 my-7 p-3">
-                <CodeEditor problemData={problemData} user={currentUser}/>
+                <CodeEditor problemData={problemData}/>
             </div>
         </main>
     )

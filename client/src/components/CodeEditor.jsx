@@ -4,7 +4,8 @@ import { LanguageSelector } from './LanguageSelector';
 import { IostreamContainer } from './IostreamContainer';
 import { CODE_SNIPPETS } from "../assets/languagesSupported";
 
-export const CodeEditor = () => {
+export const CodeEditor = ({problemData}) => {
+    // console.log(problemData);
     const [code,setCode] = useState(CODE_SNIPPETS['cpp']);
     const [language,setLanguage] = useState('cpp');
     const [userStdin, setUserStdin] = useState("");
@@ -26,23 +27,28 @@ export const CodeEditor = () => {
         setUserStdin(e.target.value);
     }
     const handleRun =async()=>{
-        setCompiling(true);
-        setUserStdout("Compiling");
-        const res = await fetch('/api/code/run',{
-            method: 'POST',
-            headers:{
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                code:code,
-                stdin:userStdin,
-                language:language
-            }),
-        });
-        const data = await res.json();
-        console.log(data);
-        setCompiling(false);
-        setUserStdout(data);
+        try{
+            setCompiling(true);
+            setUserStdout("Compiling");
+            const res = await fetch('/api/code/run',{
+                method: 'POST',
+                headers:{
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    code:code,
+                    stdin:userStdin,
+                    language:language,
+                    testInput:problemData.finalInput
+                }),
+            });
+            const data = await res.json();
+            // console.log(data);
+            setCompiling(false);
+            setUserStdout(data);
+        } catch(error){
+            setUserStdout(error);
+        }
     }
 
     const handleSubmit =()=>{

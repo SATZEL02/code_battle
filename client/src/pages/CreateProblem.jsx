@@ -113,7 +113,6 @@ export default function CreateProblem() {
         try {
             setLoading(true);
             setError(false);
-            // console.log(formData);
             const res = await fetch('api/problem/createproblem', {
                 method: 'POST',
                 headers: {
