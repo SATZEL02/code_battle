@@ -4,7 +4,7 @@ import { LanguageSelector } from './LanguageSelector';
 import { IostreamContainer } from './IostreamContainer';
 import { CODE_SNIPPETS } from "../assets/languagesSupported";
 
-export const CodeEditor = ({problemData}) => {
+export const CodeEditor = ({problemData,user}) => {
     // console.log(problemData);
     const [code,setCode] = useState(CODE_SNIPPETS['cpp']);
     const [language,setLanguage] = useState('cpp');
@@ -39,11 +39,11 @@ export const CodeEditor = ({problemData}) => {
                     code:code,
                     stdin:userStdin,
                     language:language,
-                    testInput:problemData.finalInput
+                    testInput:problemData.finalInput,
+                    testOutput:problemData.finalOutput
                 }),
             });
             const data = await res.json();
-            // console.log(data);
             setCompiling(false);
             setUserStdout(data);
         } catch(error){
@@ -51,8 +51,43 @@ export const CodeEditor = ({problemData}) => {
         }
     }
 
-    const handleSubmit =()=>{
-        setUserStdout("Code Submitted");
+    const handleSubmit = async()=>{
+        try{
+            setCompiling(true);
+            setUserStdout("Compiling");
+            const res = await fetch('/api/code/submit',{
+                method: 'POST',
+                headers:{
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    code:code,
+                    language:language,
+                    testInput:problemData.finalInput,
+                    testOutput:problemData.finalOutput
+                }),
+            });
+            const data = await res.json();
+            var verdict ="";
+            if(data.message=="Passed")  verdict = "ACC";
+            else    verdict = "Failed";
+            await fetch('/api/code/submission',{
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    code:code,
+                    verdict:verdict,
+                    userId: user,
+                    problemId:problemData._id
+                }),
+            });
+            setCompiling(false);
+            setUserStdout(data.message);
+        } catch(error){
+            setUserStdout(error);
+        }
     }
 
     return (
