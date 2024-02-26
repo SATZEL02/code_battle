@@ -71,7 +71,6 @@ export const getProblems = async(req, res,next) =>{
         const startIndex = parseInt(req.query.limit) || 0;
         let tag = req.query.tag;
         let difficulty = req.query.difficulty;
-        console.log(difficulty);
         if(tag ===undefined || tag ==="all"){
             tag = { $in:['Array' , 'String', 'Searching', 'Other']};
         }
