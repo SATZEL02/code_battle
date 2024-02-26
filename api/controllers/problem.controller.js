@@ -64,3 +64,36 @@ export const getProblem = async(req, res,next) =>{
         next(error);    
     }
 }
+
+export const getProblems = async(req, res,next) =>{
+    try{
+        const limit = parseInt(req.query.limit) || 9;
+        const startIndex = parseInt(req.query.limit) || 0;
+        let tag = req.query.tag;
+        let difficulty = req.query.difficulty;
+        console.log(difficulty);
+        if(tag ===undefined || tag ==="all"){
+            tag = { $in:['Array' , 'String', 'Searching', 'Other']};
+        }
+        if(difficulty ===undefined || difficulty ==="all"){
+            difficulty = { $in:['Easy' , 'Medium', 'Hard']};
+        }
+        const searchTerm = req.query.searchTerm || '';
+        const sort = req.query.sort || "createdAt";
+        const order = req.query.order || "desc";
+
+        const problems = await Problem.find({
+            problemName: { $regex: searchTerm, $options:'i'},
+            tag,
+            difficulty
+        }).sort(
+            {
+                [sort]:order
+            }
+        ).limit(limit).skip(startIndex);
+
+        res.status(200).json(problems);
+    } catch(error){
+        next(error);    
+    }
+}
