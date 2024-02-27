@@ -71,20 +71,26 @@ export const getProblems = async(req, res,next) =>{
         const startIndex = parseInt(req.query.limit) || 0;
         let tag = req.query.tag;
         let difficulty = req.query.difficulty;
-        if(tag ===undefined || tag ==="all"){
-            tag = { $in:['Array' , 'String', 'Searching', 'Other']};
+        let tagArray;
+        let difficultyArray;
+        if(tag ===undefined || tag===""){
+            tag = 'Array,String,Searching,Other';
         }
-        if(difficulty ===undefined || difficulty ==="all"){
-            difficulty = { $in:['Easy' , 'Medium', 'Hard']};
+        
+        tagArray = tag.split(',');
+        
+        if(difficulty ===undefined || difficulty ===""){
+            difficulty = 'Easy,Medium,Hard';
         }
+        difficultyArray = difficulty.split(',');
+        
         const searchTerm = req.query.searchTerm || '';
         const sort = req.query.sort || "createdAt";
         const order = req.query.order || "desc";
-
         const problems = await Problem.find({
             problemName: { $regex: searchTerm, $options:'i'},
-            tag,
-            difficulty
+            tag:{$in:tagArray},
+            difficulty:{$in:difficultyArray}
         }).sort(
             {
                 [sort]:order
