@@ -68,7 +68,7 @@ export const getProblem = async(req, res,next) =>{
 export const getProblems = async(req, res,next) =>{
     try{
         const limit = parseInt(req.query.limit) || 9;
-        const startIndex = parseInt(req.query.limit) || 0;
+        const startIndex = parseInt(req.query.startIndex) || 0;
         let tag = req.query.tag;
         let difficulty = req.query.difficulty;
         let tagArray;

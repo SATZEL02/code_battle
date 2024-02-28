@@ -21,10 +21,10 @@ export default function App(){
         <Route path="/" element={<Home />}/>
         <Route path="/search" element ={<Search />} />
         <Route element={<PrivateRoute />}>
-        <Route path="/profile" element={<Profile />}/>
-        <Route path="/create-problem" element={<CreateProblem />}/>
-        <Route path="/update-problem/:problemId" element={<UpdateProblem />}/>
-        <Route path="/problem/:problemId" element={<ProblemPage />}/>
+          <Route path="/profile" element={<Profile />}/>
+          <Route path="/create-problem" element={<CreateProblem />}/>
+          <Route path="/update-problem/:problemId" element={<UpdateProblem />}/>
+          <Route path="/problem/:problemId" element={<ProblemPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>
