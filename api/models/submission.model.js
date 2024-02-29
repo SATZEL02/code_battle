@@ -16,6 +16,14 @@ const submissionSchema = new mongoose.Schema({
     code:{
         type:String,
         required:true
+    },
+    language:{
+        type:String,
+        required:true
+    },
+    problemName:{
+        type:String,
+        required:true
     }
 },{timestamps:true});
 

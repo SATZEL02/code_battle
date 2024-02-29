@@ -1,6 +1,7 @@
 import { errorHandler } from "../utils/error.js";
 import { generateFile } from "../utils/generateFile.js";
 import { executeCpp } from "../utils/executeCpp.js";
+import { executePython } from "../utils/executePython.js";
 import * as https from 'https';
 import Submission from '../models/submission.model.js';
 
@@ -35,9 +36,10 @@ export const runCode = async (req, res, next) => {
       output = await executeCpp(program, input)
     } /*else if(language==="java"){
 
-        } else if(language==="python"){
-
-        }*/
+    }*/ 
+    else if(language==="python"){
+      output = await executePython(program,input);
+    }
     if (program === "error") {
       throw errorHandler(500, "Error Compiling Code");
     }
@@ -60,9 +62,10 @@ export const submitCode = async (req, res, next) => {
       output = await executeCpp(program, input);
     } /*else if(language==="java"){
 
-    } else if(language==="python"){
-
-    }*/
+    }*/ 
+    else if(language==="python"){
+      output = await executePython(program,input);
+    }
     if (program === "error") {
       throw errorHandler(500, "Error Compiling Code");
     }
@@ -77,8 +80,8 @@ export const submitCode = async (req, res, next) => {
 }
 
 export const storeSubmission = async (req, res, next) => {
-  const { code, verdict, userId, problemId } = req.body;
-  const newSubmission = new Submission({ code, verdict, userId, problemId });
+  const { code, verdict, userId, problemId,language,problemName } = req.body;
+  const newSubmission = new Submission({ code, verdict, userId, problemId,language,problemName });
   try {
     await newSubmission.save();
     res.status(201).json({ message: "Submission Successful" });

@@ -2,6 +2,7 @@ import bcryptjs from 'bcryptjs';
 import User from '../models/user.model.js';
 import { errorHandler } from '../utils/error.js'
 import Problem from '../models/problem.model.js';
+import Submission from '../models/submission.model.js';
 
 export const test = (req, res) => {
     res.json({message: 'Test Route'});
@@ -62,6 +63,16 @@ export const getUserProblems = async(req, res,next) => {
     try{
         const problems = await Problem.find({userRef:req.params.id})
         res.status(200).json(problems);
+    } catch(error){
+        next(error);
+    }
+}
+
+export const getUserSubmissions = async(req, res,next) => {
+    if(req.user.id !==req.params.id)    return next(errorHandler(401, 'You can only get your own problems!'));
+    try{
+        const submissions = await Submission.find({userId:req.params.id})
+        res.status(200).json(submissions);
     } catch(error){
         next(error);
     }

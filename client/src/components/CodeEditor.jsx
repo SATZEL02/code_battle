@@ -5,7 +5,6 @@ import { IostreamContainer } from './IostreamContainer';
 import { CODE_SNIPPETS } from "../assets/languagesSupported";
 
 export const CodeEditor = ({problemData,user}) => {
-    // console.log(problemData);
     const [code,setCode] = useState(CODE_SNIPPETS['cpp']);
     const [language,setLanguage] = useState('cpp');
     const [userStdin, setUserStdin] = useState("");
@@ -80,7 +79,9 @@ export const CodeEditor = ({problemData,user}) => {
                     code:code,
                     verdict:verdict,
                     userId: user,
-                    problemId:problemData._id
+                    problemId:problemData._id,
+                    language:language,
+                    problemName:problemData.problemName
                 }),
             });
             setCompiling(false);
