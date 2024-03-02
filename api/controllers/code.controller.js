@@ -70,6 +70,7 @@ export const submitCode = async (req, res, next) => {
     if (program === "error") {
       throw errorHandler(500, "Error Compiling Code");
     }
+    
     if (output === ExpectedOutput) {
       res.status(200).json({ message: "Passed" });
       return;

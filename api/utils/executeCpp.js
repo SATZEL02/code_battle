@@ -10,10 +10,10 @@ export const executeCpp = async(programFile, inputFile)=>{
     }
 
     const jobId = path.basename(programFile);
-    const execFile = `${jobId}.exe`;
+    const execFile = `${jobId}.out`;
     const outPath = path.join(outputPath,execFile);
     const output =  new Promise((resolve,reject)=>{
-        exec(`g++ ${programFile} -o ${outPath} && cd ${outputPath} && .\\${execFile} < ${inputFile}`,
+        exec(`g++ ${programFile} -o ${outPath} && cd ${outputPath} && ./${execFile} < ${inputFile}`,
         (error,stdout,stderr)=>{
             if(error){
                 reject(error);

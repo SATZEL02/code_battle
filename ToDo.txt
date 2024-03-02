@@ -1,4 +1,5 @@
 1) Add feature to delete excessive firebase storage
 2) Add strong password feature
-3) Checkout Piston and JudgeO Api for code execution
-4) kafka and bull mqueue
+3) kafka and bull mqueue
+4) Home Page
+5) Docker 
