@@ -1,6 +1,7 @@
 import { errorHandler } from "../utils/error.js";
 import { generateFile } from "../utils/generateFile.js";
 import { executeCpp } from "../utils/executeCpp.js";
+import { executeJava } from "../utils/executeJava.js";
 import { executePython } from "../utils/executePython.js";
 import * as https from 'https';
 import Submission from '../models/submission.model.js';
@@ -34,9 +35,9 @@ export const runCode = async (req, res, next) => {
     var output, outPath = "";
     if (language === "cpp") {
       output = await executeCpp(program, input)
-    } /*else if(language==="java"){
-
-    }*/ 
+    }else if(language==="java"){
+      output = await executeJava(program,input)
+    }
     else if(language==="python"){
       output = await executePython(program,input);
     }
@@ -60,9 +61,9 @@ export const submitCode = async (req, res, next) => {
     var output, outPath = "";
     if (language === "cpp") {
       output = await executeCpp(program, input);
-    } /*else if(language==="java"){
-
-    }*/ 
+    }else if(language==="java"){
+      output = await executeJava(program,input);
+    }
     else if(language==="python"){
       output = await executePython(program,input);
     }
