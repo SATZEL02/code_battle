@@ -4,5 +4,5 @@ RUN apk update && apk add --no-cache g++ openjdk11-jdk python3
 COPY package*.json .
 RUN npm i
 COPY . .
-EXPOSE 3000
+EXPOSE 8080
 CMD ["node","index.js"]

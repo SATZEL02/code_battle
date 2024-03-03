@@ -29,7 +29,7 @@ export const CodeEditor = ({problemData,user}) => {
         try{
             setCompiling(true);
             setUserStdout("Compiling");
-            const res = await fetch('/api/code/run',{
+            const res = await fetch('/compiler/code/run',{
                 method: 'POST',
                 headers:{
                 'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export const CodeEditor = ({problemData,user}) => {
         try{
             setCompiling(true);
             setUserStdout("Compiling");
-            const res = await fetch('/api/code/submit',{
+            const res = await fetch('/compiler/code/submit',{
                 method: 'POST',
                 headers:{
                 'Content-Type': 'application/json',

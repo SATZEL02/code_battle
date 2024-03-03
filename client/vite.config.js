@@ -9,6 +9,10 @@ export default defineConfig({
         target: 'http://localhost:3000',
         secure:false,
       },
+      '/compiler':{
+        target: 'http://localhost:8080',
+        secure:false,
+      },
     },
   },
   plugins: [react()],
