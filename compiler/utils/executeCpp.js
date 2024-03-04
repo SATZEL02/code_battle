@@ -9,7 +9,7 @@ export const executeCpp = async(programFile, inputFile)=>{
         fs.mkdirSync(outputPath, { recursive: true });
     }
 
-    const jobId = path.basename(programFile);
+    const jobId = path.basename(programFile).split(".")[0];
     const execFile = `${jobId}.out`;
     const outPath = path.join(outputPath,execFile);
     const output =  new Promise((resolve,reject)=>{

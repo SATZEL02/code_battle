@@ -68,7 +68,7 @@ export const CodeEditor = ({problemData,user}) => {
             });
             const data = await res.json();
             var verdict ="";
-            if(data.message=="Passed")  verdict = "ACC";
+            if(data.message==="ACC")  verdict = "ACC";
             else    verdict = "Failed";
             await fetch('/api/code/submission',{
                 method:'POST',

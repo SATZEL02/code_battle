@@ -1,5 +1,7 @@
 import * as fs from "fs";
 import path from "path";
+import {v4 as uuidv4} from 'uuid';
+
 const __dirname = path.resolve();
 
 export const generateFile = async (code, language) => {
@@ -8,10 +10,10 @@ export const generateFile = async (code, language) => {
         if (!fs.existsSync(dirCode)) {
             fs.mkdirSync(dirCode, { recursive: true });
         }
-        const jobid = "program";
+        const jobid = uuidv4();
         var format ="txt";
-        if (language === "cpp" || language === "java") format = language;
-        if (language === "python") format = "py";
+        if (language === "cpp" || language === "java" || language === "bashrc") format = language;
+        else if (language === "python") format = "py";
         const fileName = `${jobid}.${format}`;
         const filePath = path.join(dirCode, fileName);
         fs.writeFileSync(filePath, code);

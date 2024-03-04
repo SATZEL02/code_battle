@@ -3,6 +3,7 @@ import { generateFile } from "../utils/generateFile.js";
 import { executeCpp } from "../utils/executeCpp.js";
 import { executeJava } from "../utils/executeJava.js";
 import { executePython } from "../utils/executePython.js";
+import { compareFiles } from "../utils/compareFiles.js";
 import * as https from 'https';
 
 function retrieveTextFileFromURL(downloadURL) {
@@ -31,7 +32,7 @@ export const runCode = async (req, res, next) => {
   try {
     const program = await generateFile(code, language);
     const input = await generateFile(stdin, "txt");
-    var output, outPath = "";
+    var output;
     if (language === "cpp") {
       output = await executeCpp(program, input)
     }else if(language==="java"){
@@ -55,11 +56,12 @@ export const submitCode = async (req, res, next) => {
     const code = req.body.code;
     const language = req.body.language;
     const testInput = await retrieveTextFileFromURL(req.body.testInput);
-    const ExpectedOutput = await retrieveTextFileFromURL(req.body.testOutput);
-    console.log("ExpectedOutput: " + ExpectedOutput);
+    var ExpectedOutput = await retrieveTextFileFromURL(req.body.testOutput);
+    const type = typeof ExpectedOutput;
+    console.log(type);
     const program = await generateFile(code, language);
     const input = await generateFile(testInput, "txt");
-    var output, outPath = "";
+    var output;
     if (language === "cpp") {
       output = await executeCpp(program, input);
     }else if(language==="java"){
@@ -71,13 +73,16 @@ export const submitCode = async (req, res, next) => {
     if (program === "error") {
       throw errorHandler(500, "Error Compiling Code");
     }
-    output = output.trim();
-    console.log("Output: "+output);
-    if (output === ExpectedOutput) {
-      res.status(200).json({ message: "Passed" });
+    output = output.toString().trim();
+    ExpectedOutput = ExpectedOutput.toString().trim();
+    const expectedOutputFile = await generateFile(ExpectedOutput,"bashrc");
+    const outputFile = await generateFile(output,"bashrc");
+    const result = await compareFiles(outputFile,expectedOutputFile);
+    if (result === "ACC") {
+      res.status(200).json({ message:"ACC" });
       return;
     }
-    res.status(200).json({ message: "Failed" });
+    res.status(200).json({ message:"Failed" });
   } catch (error) {
     res.status(200).json({ message: error.message });
   }
