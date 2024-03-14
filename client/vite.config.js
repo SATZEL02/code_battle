@@ -10,7 +10,7 @@ export default defineConfig({
         secure:false,
       },
       '/compiler':{
-        target: 'http://localhost:8080',
+        target: import.meta.env.VITE_AWS_PUBLIC_IPV4,
         secure:false,
       },
     },
