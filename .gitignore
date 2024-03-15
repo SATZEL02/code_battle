@@ -13,8 +13,7 @@ dist-ssr
 *.local
 
 keys/
-
-.env
+**/*.env
 coverage/
 
 # Editor directories and files
