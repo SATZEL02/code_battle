@@ -7,6 +7,7 @@ import problemRouter from './routes/problem.route.js';
 import codeRouter from './routes/code.route.js';
 import cors  from 'cors';
 import cookieParser from 'cookie-parser';
+import path from "path";
 dotenv.config();
 
 mongoose
@@ -18,6 +19,8 @@ mongoose
         }
         );
 
+
+        const __dirname = path.resolve();
 
 const app = express();
 app.use(cors());
@@ -34,6 +37,11 @@ app.use("/api/auth",authRouter);
 app.use("/api/problem",problemRouter);
 app.use("/api/code",codeRouter)
 
+app.use(express.static(path.join(__dirname,'/client/dist')));
+
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname,'client','dist','index.html'));
+})
 
 app.use((err,req,res,next) => {
     const statusCode = err.statusCode || 500;
