@@ -15,6 +15,7 @@ export default defineConfig(({mode}) =>{
         },
         '/compiler':{
           target: env.VITE_AWS_PUBLIC_IPADDRESS,
+          changeOrigin:true,
           secure:false,
         },
       },
