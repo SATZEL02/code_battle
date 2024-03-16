@@ -6,7 +6,7 @@ export default defineConfig({
     server:{
       proxy: {
         '/api': {
-          target: "https://codebattle-production-3bad.up.railway.app",
+          target: "http://localhost:3000",
           secure:false,
         },
         '/compiler':{
