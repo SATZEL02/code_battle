@@ -32,7 +32,7 @@ app.listen(3000, () => {
 });
 
 app.get('/',(req,res)=>{
-    res.json({message:"API CONNECTED!"});
+    res.status(200).send({message:"API CONNECTED!"});
 })
 
 app.use("/api/user",userRouter);
