@@ -1,25 +1,21 @@
-import { defineConfig,loadEnv } from 'vite'
+import { defineConfig} from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
 // https://vitejs.dev/config/
-export default defineConfig(({mode}) =>{
-  // eslint-disable-next-line no-undef
-  const env = loadEnv(mode, process.cwd(), '')
-
-  return{
+export default defineConfig({
     server:{
       proxy: {
         '/api': {
-          target: env.VITE_API_IPADDRESS,
+          target: "http://localhost:3000",
           secure:false,
         },
         '/compiler':{
-          target: env.VITE_AWS_PUBLIC_IPADDRESS,
+          target: "http://13.201.133.203:8080",
           changeOrigin:true,
           secure:false,
         },
       },
     },
     plugins: [react()],
-  }
-})
+    }
+)
