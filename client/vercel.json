@@ -6,7 +6,7 @@
     },
     {
       "source": "/compiler/:path*",
-      "destination": "http://52.66.251.218:8080/compiler/:path*"
+      "destination": "https://52.66.251.218:8080/compiler/:path*"
     }
   ]
 }
