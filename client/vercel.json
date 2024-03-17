@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://code-battle-gneo.onrender.com/api/:path*"
+    },
+    {
+      "source": "/compiler/:path*",
+      "destination": "https://52.66.239.158:8080/api/:path*"
     }
   ]
 }
