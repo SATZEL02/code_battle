@@ -2,11 +2,11 @@
   "routes": [
     {
       "src": "/api",
-      "dest": "https://code-battle-gneo.onrender.com"
+      "dest": "https://code-battle-gneo.onrender.com/api"
     },
     {
       "src": "/compiler",
-      "dest": "https://52.66.239.158:8080"
+      "dest": "https://52.66.239.158:8080/compiler"
     }
   ]
 }
