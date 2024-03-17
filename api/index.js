@@ -23,7 +23,30 @@ mongoose
         const __dirname = path.resolve();
 
 const app = express();
-app.use(cors());
+const prodOrigins = [
+    process.env.ORIGIN_1,
+    process.env.ORIGIN_2
+  ];
+//   const devOrigin = ['http://localhost:5173'];
+  const allowedOrigins = prodOrigins;
+  app.use(
+    cors({
+      origin: (origin, callback) => {
+        if (process.env.NODE_ENV === 'production') {
+          if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+          } else {
+            callback(new Error(`${origin} not allowed by cors`));
+          }
+        } else {
+          callback(null, true);
+        }
+      },
+      optionsSuccessStatus: 200,
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    }),
+  );
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
