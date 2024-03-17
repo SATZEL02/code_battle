@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+      {
+        "source": "/api",
+        "destination": "https://code-battle-gneo.onrender.com"
+      },
+      {
+        "source": "/compiler",
+        "destination": "https://52.66.239.158:8080"
+      }
+    ]
+  }
