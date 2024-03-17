@@ -7,22 +7,22 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig(({ mode })=>{
   
   // eslint-disable-next-line no-undef
-  const env = loadEnv(mode, process.cwd(), '');
+  // const env = loadEnv(mode, process.cwd(), '');
   return ({
-    server:{
-      proxy: {
-        '/api': {
-          target: env.API_IPADDRESS,
-          changeOrigin:true,
-          secure:false,
-        },
-        '/compiler':{
-          target: env.AWS_PUBLIC_IPADDRESS,
-          changeOrigin:true,
-          secure:false,
-        },
-      },
-    },
+    // server:{
+    //   proxy: {
+    //     '/api': {
+    //       target: env.API_IPADDRESS,
+    //       changeOrigin:true,
+    //       secure:false,
+    //     },
+    //     '/compiler':{
+    //       target: env.AWS_PUBLIC_IPADDRESS,
+    //       changeOrigin:true,
+    //       secure:false,
+    //     },
+    //   },
+    // },
     plugins: [react()]
   });
 });

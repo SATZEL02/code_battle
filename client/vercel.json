@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api",
-      "destination": "https://code-battle-gneo.onrender.com"
+      "source": "/api/:path*",
+      "destination": "https://code-battle-gneo.onrender.com/api/:path*"
     }
   ]
 }
