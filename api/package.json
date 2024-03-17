@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "proxy": "https://code-battle-gneo.onrender.com",
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
