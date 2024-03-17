@@ -1,12 +1,12 @@
 {
   "routes": [
     {
-      "source": "/api",
-      "destination": "https://code-battle-gneo.onrender.com"
+      "src": "/api",
+      "dest": "https://code-battle-gneo.onrender.com"
     },
     {
-      "source": "/compiler",
-      "destination": "https://52.66.239.158:8080"
+      "src": "/compiler",
+      "dest": "https://52.66.239.158:8080"
     }
   ]
 }
