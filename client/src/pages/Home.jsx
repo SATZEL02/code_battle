@@ -71,9 +71,9 @@ export default function Home(){
                     </div>
                     <div className='flex flex-wrap gap-4'>
                     {
-                        arrayProblems.map((problem)=>{
+                        arrayProblems.map((problem)=>(
                             <ProblemItem key={problem.problemName} problem={problem}/>
-                        })
+                        ))
                     }
                     </div>
                 </div>
@@ -88,9 +88,9 @@ export default function Home(){
                     </div>
                     <div className='flex flex-wrap gap-4'>
                     {
-                        stringProblems.map((problem)=>{
+                        stringProblems.map((problem)=>(
                             <ProblemItem key={problem.problemName} problem={problem}/>
-                        })
+                        ))
                     }
                     </div>
                 </div>
@@ -105,9 +105,9 @@ export default function Home(){
                     </div>
                     <div className='flex flex-wrap gap-4'>
                     {
-                        searchingProblems.map((problem)=>{
+                        searchingProblems.map((problem)=>(
                             <ProblemItem key={problem.problemName} problem={problem}/>
-                        })
+                        ))
                     }
                     </div>
                 </div>
