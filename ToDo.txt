@@ -1,5 +1,5 @@
 1) Add feature to delete excessive firebase storage
-2) Add strong password feature
+2) Home Page & About
 3) kafka and bull mqueue
-4) Docker
-5) AJAX
+4) SetTimeOut Compiler
+5) Cron Jobs
