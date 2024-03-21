@@ -36,7 +36,10 @@ export default function Home(){
             }
         }
         fetchArrayProblems();
-    },[arrayProblems,stringProblems,searchingProblems]);
+    },[]);
+    console.log(arrayProblems);
+    console.log(stringProblems);
+    console.log(searchingProblems);
   return(
     <div>
         {/*top*/}
