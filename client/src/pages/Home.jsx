@@ -36,7 +36,7 @@ export default function Home(){
             }
         }
         fetchArrayProblems();
-    },[])
+    },[arrayProblems,stringProblems,searchingProblems]);
   return(
     <div>
         {/*top*/}
@@ -85,7 +85,7 @@ export default function Home(){
                     </div>
                     <div className='flex flex-wrap gap-4'>
                     {
-                        arrayProblems.map((problem)=>{
+                        stringProblems.map((problem)=>{
                             <ProblemItem key={problem.problemName} problem={problem}/>
                         })
                     }
@@ -102,7 +102,7 @@ export default function Home(){
                     </div>
                     <div className='flex flex-wrap gap-4'>
                     {
-                        arrayProblems.map((problem)=>{
+                        searchingProblems.map((problem)=>{
                             <ProblemItem key={problem.problemName} problem={problem}/>
                         })
                     }
