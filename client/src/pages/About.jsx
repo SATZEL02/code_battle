@@ -4,7 +4,7 @@ export default function About() {
     <div className="py-20 px-4 max-w-6xl mx-auto">
       <h1 className="text-3xl font-bold mb-4 text-slate-800">Welcome to CodeBattle - Where Code Meets Evaluation!</h1>
       <p className="mb-4 text-slate-700">
-        At CodeBAttle, we've built a cutting-edge online code judge platform that revolutionizes the way developers test, evaluate, and improve their coding skills. Whether you're a seasoned programmer honing your expertise or a novice eager to learn, our platform provides the tools and resources you need to thrive in the ever-evolving world of software development.
+        At CodeBattle, we've built a cutting-edge online code judge platform that revolutionizes the way developers test, evaluate, and improve their coding skills. Whether you're a seasoned programmer honing your expertise or a novice eager to learn, our platform provides the tools and resources you need to thrive in the ever-evolving world of software development.
       </p>
       <h2 className="font-semibold mb-4 text-slate-800">Our Mission</h2>
       <p className="mb-4 text-slate-700">
