@@ -3,7 +3,7 @@ import { TiUserOutline } from "react-icons/ti";
 export const ProblemItem = ({problem}) =>{
     var imageURL = "https://miro.medium.com/v2/resize:fit:1400/0*f2p6gIQ2RepRRCLW.png"
     if(problem.tag ==='String') imageURL = "https://blog.hubspot.com/hubfs/Copy%20of%20Featured%20Image%20Template%20Backgrounds%20%284%29.png";
-    if(problem.tag ==='Searching')  imageURL = "https://static.vecteezy.com/system/resources/previews/016/730/331/non_2x/search-icon-illustration-with-programming-editor-searching-coding-icon-related-to-developer-line-icon-style-suitable-for-apps-websites-mobile-apps-simple-design-editable-vector.jpg";
+    if(problem.tag ==='Searching')  imageURL = "https://files.realpython.com/media/How-to-Do-a-Binary-Search-in-Python_Watermarked.e44b17443dd2.jpg";
     if(problem.tag ==='Array') imageURL = "https://www.hubspot.com/hubfs/how-to-start-coding-1.jpg";
     return(
         <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
