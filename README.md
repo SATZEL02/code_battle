@@ -8,6 +8,15 @@
 <img src = "https://firebasestorage.googleapis.com/v0/b/codebattle-ce684.appspot.com/o/image.png?alt=media&token=69be9509-1ac7-45f4-9899-b29c8f0b20c1" alt="Visit website" width="480" height="240"/>
 </a>
 
+## Table of Contents
+
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [How to Use](#how-to-use-the-website)
+- [For Developers](#for-developers-and-contributors)
+- [Known Errors](#error-fixes-required)
+- [To Do](#to-do)
+
 ## Technologies Used
 
 - **Express.js:** A web application framework for building APIs and handling server-side logic.
@@ -30,7 +39,7 @@ The main purpose of this web application to help its users get better at their p
 6. Make a Web Application production ready and deploy it on AWS, Vercel and Render.
 7. Implement a Code Editor and a API to compile code written by the users and give the verdict of their submission. 
 
-## How to use the Website:
+## How to use the Website
 
 1. Visit the website using the link provided above.
 2. If you are a new user, you can still see the problems and content this application has to offer but if you want to try your problem solving skills you need to first sign up/sign in with us first.
@@ -46,7 +55,7 @@ The main purpose of this web application to help its users get better at their p
 
 Happy Coding..
 
-## For Developers and Contributors:
+## For Developers and Contributors
 
 1. Clone the github Repository to your local system.
 2. Initiate your own environment variables.
@@ -58,12 +67,12 @@ Happy Coding..
 6. Code Compilation API is deployed on AWS and uses Docker for security and isolation reasons.
 7. Backend API is deployed on render and frontend API is deployed on Vercel, so you might want to code keeping these things in mind
 
-## Error Fixes Required:
+## Error Fixes Required
 
 * After closing the window, access cookie is deleted but redux persistor is not deleted, which can lead to an error.
 * Python Compilation error for taking input from a text file
 
-## To Do:
+## To Do
 
 * Implement message queue for load balancing
 * Show submitted Code to user
