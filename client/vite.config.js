@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vitejs.dev/config/
 // eslint-disable-next-line no-unused-vars
 export default defineConfig(({ mode })=>{
-  
+  //uncomment the below lines of code and add variables to env file for testing
   // eslint-disable-next-line no-undef
   // const env = loadEnv(mode, process.cwd(), '');
   return ({

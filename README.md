@@ -57,15 +57,28 @@ Happy Coding..
 
 ## For Developers and Contributors
 
-1. Clone the github Repository to your local system.
-2. Initiate your own environment variables.
-3. You would need following dependencies and programs preinstalled to use:
- * Docker
- * NodeJS
-4. You also want to change vite.config.js file to route the application for your locally hosted backend.
+### Project Setup
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/SATZEL02/code_battle.git
+   cd code_battle
+2. **Install the dependencies:**
+ 
+   ```bash
+   npm install
+3. **Start the server:**
+  
+   ```bash
+   nodemon index.js
+4. You might also want to change vite.config.js file to route the application for your locally hosted backend.
 5. This application is divided into three parts: Frontend, DataBase API and Code Compilation API
-6. Code Compilation API is deployed on AWS and uses Docker for security and isolation reasons.
-7. Backend API is deployed on render and frontend API is deployed on Vercel, so you might want to code keeping these things in mind
+
+## Deployment
+
+1. Code Compilation API is deployed on AWS and uses Docker for security and isolation reasons.
+2. Backend API is deployed on render and frontend API is deployed on Vercel
 
 ## Error Fixes Required
 
