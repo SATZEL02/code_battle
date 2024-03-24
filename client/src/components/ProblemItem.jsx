@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { TiUserOutline } from "react-icons/ti";
 export const ProblemItem = ({problem}) =>{
-    var imageURL = "https://simpleprogrammer.com/wp-content/uploads/2022/08/Basic-Programming-Interview-Questions.png"
-    if(problem.tag ==='String') imageURL = "https://upload.wikimedia.org/wikipedia/commons/6/6b/String_example.png";
+    var imageURL = "https://miro.medium.com/v2/resize:fit:1400/0*f2p6gIQ2RepRRCLW.png"
+    if(problem.tag ==='String') imageURL = "https://blog.hubspot.com/hubfs/Copy%20of%20Featured%20Image%20Template%20Backgrounds%20%284%29.png";
     if(problem.tag ==='Searching')  imageURL = "https://static.vecteezy.com/system/resources/previews/016/730/331/non_2x/search-icon-illustration-with-programming-editor-searching-coding-icon-related-to-developer-line-icon-style-suitable-for-apps-websites-mobile-apps-simple-design-editable-vector.jpg";
     if(problem.tag ==='Array') imageURL = "https://i0.wp.com/www.bragitoff.com/wp-content/uploads/2017/08/Array-in-C.gif";
     return(
