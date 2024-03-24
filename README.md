@@ -15,7 +15,7 @@ The main purpose of this web application to help its users get better at their p
 ## Take a Look at the website
 
 <a href="https://code-battle-five.vercel.app/" target="_blank">
-<img src = "https://firebasestorage.googleapis.com/v0/b/codebattle-ce684.appspot.com/o/image.png?alt=media&token=69be9509-1ac7-45f4-9899-b29c8f0b20c1" alt="Visit website" width="480" height="360"/>
+<img src = "https://firebasestorage.googleapis.com/v0/b/codebattle-ce684.appspot.com/o/image.png?alt=media&token=69be9509-1ac7-45f4-9899-b29c8f0b20c1" alt="Visit website" width="480" height="240"/>
 </a>
 
 ## How to use the Website:
