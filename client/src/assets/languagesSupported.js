@@ -1,7 +1,7 @@
 export const LANGUAGE_VERSIONS ={
     cpp: "C++ 17",
-    java:"Java 21",
-    python:"Python3"
+    java:"Java 21"
+    // python:"Python3"
 }
 
 export const CODE_SNIPPETS ={
